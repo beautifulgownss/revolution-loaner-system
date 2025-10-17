@@ -40,14 +40,17 @@ const seedData = async () => {
     `);
     console.log('✓ Vehicles seeded');
 
-    // Seed a sample reservation
+    // Seed sample reservations
     await pool.query(`
       INSERT INTO reservations (reservation_id, customer_id, vehicle_id, assigned_advisor_id, start_date, end_date, status)
       VALUES
-        ('RES001', 'CUST001', 'VEH001', 'SA001', CURRENT_DATE, CURRENT_DATE + INTERVAL '3 days', 'reserved')
+        ('RES001', 'CUST001', 'VEH001', 'SA001', CURRENT_DATE, CURRENT_DATE + INTERVAL '3 days', 'reserved'),
+        ('RES002', 'CUST002', 'VEH002', 'SA002', CURRENT_DATE + INTERVAL '5 days', CURRENT_DATE + INTERVAL '7 days', 'reserved'),
+        ('RES003', 'CUST003', 'VEH003', 'SA003', CURRENT_DATE - INTERVAL '2 days', CURRENT_DATE + INTERVAL '1 day', 'in-use'),
+        ('RES004', 'CUST004', 'VEH004', 'SA001', CURRENT_DATE + INTERVAL '10 days', CURRENT_DATE + INTERVAL '12 days', 'reserved')
       ON CONFLICT (reservation_id) DO NOTHING;
     `);
-    console.log('✓ Sample reservation seeded');
+    console.log('✓ Sample reservations seeded');
 
     // Seed eligibility verification for the sample reservation
     await pool.query(`

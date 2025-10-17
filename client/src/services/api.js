@@ -19,6 +19,8 @@ export const getReservation = (id) => api.get(`/reservations/${id}`);
 
 export const createReservation = (data) => api.post('/reservations', data);
 
+export const updateReservation = (id, data) => api.put(`/reservations/${id}`, data);
+
 export const updateReservationStatus = (id, status) =>
   api.patch(`/reservations/${id}/status`, { status });
 
@@ -27,6 +29,8 @@ export const checkOutVehicle = (id, inspectionData) =>
 
 export const checkInVehicle = (id, inspectionData) =>
   api.post(`/reservations/${id}/checkin`, inspectionData);
+
+export const deleteReservation = (id) => api.delete(`/reservations/${id}`);
 
 // Vehicles
 export const getVehicles = (status) => {

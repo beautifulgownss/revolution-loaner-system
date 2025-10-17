@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getReservations, getVehicles } from '../services/api';
 import { formatDate, getStatusColor } from '../utils/helpers';
+import CalendarView from './CalendarView';
 
 const Dashboard = () => {
   const [reservations, setReservations] = useState([]);
@@ -118,6 +119,9 @@ const Dashboard = () => {
           delay={400}
         />
       </div>
+
+      {/* Calendar View */}
+      <CalendarView />
 
       {/* Filters and Table */}
       <div className="card">
